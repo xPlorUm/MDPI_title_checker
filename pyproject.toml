@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "mdpi-title-checker"
+version = "0.1.0"
+description = "This project uses a pretrained model to find the closest title towards a reference title."
+authors = ["Cedric Tschechtelin <cedric.tschechtelin@gmx.ch>"]
+readme = "README.md"
+packages = [{include = "MDPI_title_checker", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "<3.15,>=3.10"
+fastapi = {extras = ["standard"], version = "^0.136.0"}
+uvicorn = "^0.45.0"
+transformers = "^5.6.0"
+torch = "^2.11.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
