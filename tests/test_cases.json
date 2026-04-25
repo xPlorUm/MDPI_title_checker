@@ -1,0 +1,159 @@
+[
+  {
+    "reference": "Higgs boson in particle physics",
+    "other": [
+    "Best soup recipes", "Basel activities", "Particle physics at CERN"
+    ],
+    "expected": "Particle physics at CERN"
+  },
+  {
+    "reference": "Deep learning approaches for natural language processing",
+    "other": [
+      "DL methods in NLP",
+      "Statistical methods for text processing",
+      "Natural language understanding with rule-based systems",
+      "Applications of reinforcement learning in robotics"
+    ],
+    "expected": "DL methods in NLP"
+  },
+  {
+    "reference": "Non-linear optimization techniques in control systems",
+    "other": [
+      "Nonlinear optimisation in control theory",
+      "Linear control system design",
+      "Optimization problems in economics",
+      "Robust control using linear models"
+    ],
+    "expected": "Nonlinear optimisation in control theory"
+  },
+  {
+    "reference": "Analysis of stochastic processes in financial markets",
+    "other": [
+      "Analyse des processus stochastiques en finance",
+      "Deterministic models in finance",
+      "Stochastic modeling for stock price prediction",
+      "Financial accounting methods and standards"
+    ],
+    "expected": "Stochastic modeling for stock price prediction"
+  },
+  {
+    "reference": "Graph neural networks for molecular property prediction",
+    "other": [
+      "Neural networks for image classification",
+      "Graph-based models in chemistry",
+      "Molecular property prediction using graph neural nets",
+      "Quantum chemistry simulations"
+    ],
+    "expected": "Molecular property prediction using graph neural nets"
+  },
+  {
+    "reference": "Convolutional neural networks for medical image segmentation",
+    "other": [
+      "CNNs in medical imaging segmentation",
+      "Neural networks for disease prediction",
+      "Image classification using support vector machines",
+      "Segmentation algorithms in computer vision"
+    ],
+    "expected": "CNNs in medical imaging segmentation"
+  },
+  {
+    "reference": "C++ memory management and performance optimization",
+    "other": [
+      "Memory management in C plus plus",
+      "Java garbage collection techniques",
+      "Performance tuning in Python",
+      "Low-level systems programming in Rust"
+    ],
+    "expected": "Memory management in C plus plus"
+  },
+  {
+    "reference": "Bayesian inference methods for probabilistic models",
+    "other": [
+      "Bayesian methods in statistics",
+      "Probabilistic graphical models and inference",
+      "Frequentist approaches to statistical inference",
+      "Approximate Bayesian inference in complex models"
+    ],
+    "expected": "Approximate Bayesian inference in complex models"
+  },
+  {
+    "reference": "The role of attention mechanisms in transformer architectures",
+    "other": [
+      "Attention in transformers",
+      "Transformer models without attention",
+      "Recurrent neural networks for sequence modeling",
+      "Mechanisms of attention in deep learning architectures"
+    ],
+    "expected": "Attention in transformers"
+  },
+  {
+    "reference": "Reinforcement learning for autonomous driving systems",
+    "other": [
+      "Reinforcement learning in robotics",
+      "Autonomous driving using supervised learning",
+      "RL for self-driving cars",
+      "Control systems in autonomous vehicles"
+    ],
+    "expected": "RL for self-driving cars"
+  },
+  {
+    "reference": "Optimization of energy consumption in distributed systems",
+    "other": [
+      "Distributed optimization for energy systems",
+      "Energy-efficient distributed computing",
+      "Optimization techniques in centralized systems",
+      "Energy consumption models in computing"
+    ],
+    "expected": "Energy-efficient distributed computing"
+  },
+  {
+    "reference": "Gene expression analysis using RNA sequencing data",
+    "other": [
+      "RNA-seq based gene expression analysis",
+      "DNA sequencing techniques",
+      "Protein expression in cells",
+      "Genomic data processing pipelines"
+    ],
+    "expected": "RNA-seq based gene expression analysis"
+  },
+  {
+    "reference": "Transfer learning in computer vision applications",
+    "other": [
+      "Transfer learning for image recognition",
+      "Domain adaptation in vision tasks",
+      "Computer vision using deep learning",
+      "Pretrained models for visual tasks"
+    ],
+    "expected": "Transfer learning for image recognition"
+  },
+  {
+    "reference": "Quantum computing algorithms for cryptography",
+    "other": [
+      "quantum computing for cryptography",
+      "Cryptographic algorithms in classical computing",
+      "Quantum algorithms and complexity",
+      "Post-quantum cryptography methods"
+    ],
+    "expected": "quantum computing for cryptography"
+  },
+  {
+    "reference": "Climate change impact on marine biodiversity",
+    "other": [
+      "Marine ecosystems and biodiversity",
+      "Impact of climate change on oceans",
+      "Biodiversity conservation strategies",
+      "Ocean temperature modeling"
+    ],
+    "expected": "Impact of climate change on oceans"
+  },
+  {
+    "reference": "Causal inference in observational studies",
+    "other": [
+      "Causality in experimental studies",
+      "Observational data analysis methods",
+      "Causal inference using observational data",
+      "Correlation analysis in statistics"
+    ],
+    "expected": "Causal inference using observational data"
+  }
+]

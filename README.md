@@ -1,9 +1,30 @@
 # MDPI_title_checker
 Assessment of MDPI including the implementation of a title similarity checker using FastAPI.
 
+# Task description:
+
+1) API endpoint that receives article titles as JSON object check
+2) Use preprocessing tool to normalize titles
+3) Use pretrained model to compute vectors in embedding space for each input title
+4) Use L2 distance or cosine distance in vector space 
+5) Endpoint returns the title that is most similar to the reference title
+
+Example JSON Object input: 
+{
+  "reference": "Higgs boson in particle physics",
+  "other": [
+    "Best soup recipes", "Basel activities", "Particle physics at CERN"
+  ]
+}
+Example Output: 
+{“top_result”: “Particle physics at CERN”}
+
+
+
+# TODO do this for UNIX systems as well:
+
 # How to install this project using poetry:
 poetry install
-
 
 # How to run this project:
 1) poetry run uvicorn src.MDPI_title_checker.main:app --reload
@@ -18,3 +39,6 @@ or
             "reference": "Higgs boson in particle physics",
             "other": ["Best soup recipes", "Basel activities", "Particle physics at CERN"]
         }'
+
+# How to run tests
+1) poetry run pytest
