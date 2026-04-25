@@ -2,7 +2,7 @@
 Assessment of MDPI including the implementation of a title similarity checker using FastAPI.
 
 # How to install this project using poetry:
-poetry install .
+poetry install
 
 
 # How to run this project:
