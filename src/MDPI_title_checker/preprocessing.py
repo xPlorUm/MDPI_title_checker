@@ -10,6 +10,9 @@ stop_words = set(stopwords.words('english'))
 def preprocess(texts):
     return [normalize(text) for text in texts]
     
+# Normalization does break semantic comparison quite often, hence just skip it
+# 
+
 # def normalize(string):
 #     # convert to lower case
 #     no_number_string = string.lower()

@@ -1,93 +1,83 @@
 
 import torch.nn.functional as F
-from torch import Tensor
 import torch
 from transformers import AutoTokenizer, AutoModel
-from adapters import AutoAdapterModel
-from .preprocessing import preprocess
 from abc import ABC, abstractmethod
 
 
 class SimilarityModel(ABC):
-    def __init__(self):
+    def __init__(self, model_name):
+        self.model_name = model_name
+        self.model = AutoModel.from_pretrained(self.model_name)
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.model.to(self.device)
+        self.model.eval()
+        
     @abstractmethod
-    def encode(input_text):
+    def encode(self, input_text):
         pass
     
-    def find_most_similar(self, reference, others): 
-        # normalized_text = preprocess([reference] + others)
-        # embeddings = self.encode(normalized_text)
+    def _encode_batch(self, input_text):
+        text_batch = input_text
+        
+        batch_dict = self.tokenizer(
+                                    text_batch,
+                                    padding=True,
+                                    truncation=True,
+                                    return_tensors="pt",
+                                    return_token_type_ids=False, 
+                                    max_length=512, 
+                                    )
+        
+        batch_dict = {k: v.to(self.device) for k, v in batch_dict.items()}
+
+        with torch.no_grad():
+            outputs = self.model(**batch_dict)
+            
+        embeddings = self.average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
+        
+        return F.normalize(embeddings, p=2, dim=1)
+    
+    def find_most_similar(self, reference, others):
         embeddings = self.encode([reference] + others)
         
-        scores = (embeddings[:1] @ embeddings[1:].T) * 100
+        scores = (embeddings[:1] @ embeddings[1:].T) # cosine similarity
         top_result_idx = scores.argmax().item()
         
         return others[top_result_idx], scores
     
-    def average_pool(self, last_hidden_states, attention_mask):
+    @staticmethod
+    def average_pool(last_hidden_states, attention_mask):
         last_hidden = last_hidden_states.masked_fill(~attention_mask[..., None].bool(), 0.0)
-        return last_hidden.sum(dim=1) / attention_mask.sum(dim=1)[..., None]
+        denom = attention_mask.sum(dim=1).clamp(min=1)[..., None]
+        return last_hidden.sum(dim=1) / denom
+        
 
-    
+# Multilingual embedding model (good general semantic similarity performance, but slower)
 class MultiLingualE5Model(SimilarityModel):
     def __init__(self):
-        self.model_name = "intfloat/multilingual-e5-large"
-        self.model = AutoModel.from_pretrained(self.model_name)
-        super().__init__()
+        super().__init__("intfloat/multilingual-e5-large")
     
     def encode(self, input_text):
+        # E5 expects "query:" and "passage:" prefixes
         texts = ["query: " + input_text[0]] + ["passage: " + o for o in input_text[1:]]
+        return self._encode_batch(texts)
         
-        batch_dict = self.tokenizer(texts, max_length=512, padding=True, truncation=True, return_tensors='pt')
-        
-        with torch.no_grad():
-            outputs = self.model(**batch_dict)
-            
-        embeddings = self.average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
-        
-        return F.normalize(embeddings, p=2, dim=1)
-    
+# Model trained on scientific papers (title/abstract similarity)
 class Specter2Model(SimilarityModel):
     def __init__(self):
-        self.model_name = "allenai/specter2_base"
-        self.model = AutoModel.from_pretrained(self.model_name)
-        # self.model_name = "allenai/specter2_base"
-        # self.model = AutoAdapterModel.from_pretrained(self.model_name)
-        # self.model.load_adapter("allenai/specter2_proximity", source="hf", load_as="specter2", set_active=True)
-        super().__init__()
+        super().__init__("allenai/specter2_base")
 
     def encode(self, input_text):
-        text_batch = input_text # can be extended with abstract in the future
-        
-        batch_dict = self.tokenizer(text_batch, padding=True, truncation=True,
-                                        return_tensors="pt", return_token_type_ids=False, max_length=512)
-
-        with torch.no_grad():
-            outputs = self.model(**batch_dict)
-            
-        embeddings = self.average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
-        
-        return F.normalize(embeddings, p=2, dim=1)
+        return self._encode_batch(input_text)
     
+# Lightweight sentence-transformer for semantic similarity, precise and fast just issues with abbreviations
 class SemanticModel(SimilarityModel):
     def __init__(self):
-        self.model_name = "sentence-transformers/all-MiniLM-L6-v2"
-        self.model = AutoModel.from_pretrained(self.model_name)
-        super().__init__()
+        super().__init__("sentence-transformers/all-MiniLM-L6-v2")
         
     def encode(self, input_text):
-        text_batch = input_text
-        
-        batch_dict = self.tokenizer(text_batch, padding=True, truncation=True,
-                                        return_tensors="pt", return_token_type_ids=False, max_length=512)
+        return self._encode_batch(input_text)
 
-        with torch.no_grad():
-            outputs = self.model(**batch_dict)
-            
-        embeddings = self.average_pool(outputs.last_hidden_state, batch_dict['attention_mask'])
-        
-        return F.normalize(embeddings, p=2, dim=1)
-    
-        

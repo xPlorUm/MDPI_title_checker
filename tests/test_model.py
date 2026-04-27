@@ -12,12 +12,13 @@ with open(BASE / "test_cases.json") as f:
 @pytest.mark.parametrize("case", cases, ids=[f"{i}-{c['name']}" for i, c in enumerate(cases)])
 def test_model(case):
     # model = Specter2Model()
-    # model = SemanticModel()
-    model = MultiLingualE5Model()
-
+    model = SemanticModel()
+    # model = MultiLingualE5Model()
+    
     result, _ = model.find_most_similar(
         case["reference"],
         case["other"]
     )
+    
     
     assert result == case["expected"]

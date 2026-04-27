@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 from .schemas import TitleRequest
-from .model import MultiLingualE5Model, Specter2Model
+from .model import MultiLingualE5Model, Specter2Model, SemanticModel
 
 
 app = FastAPI()
-# model = MultiLingualE5Model()
-model = Specter2Model()
+model = SemanticModel()
 
 
 # Send a Request body from the client (browser) to my API
