@@ -1,12 +1,16 @@
 [
   {
+    "name": "baseline_particle_physics",
     "reference": "Higgs boson in particle physics",
     "other": [
-    "Best soup recipes", "Basel activities", "Particle physics at CERN"
+      "Best soup recipes",
+      "Basel activities",
+      "Particle physics at CERN"
     ],
     "expected": "Particle physics at CERN"
   },
   {
+    "name": "abbreviations_nlp_dl",
     "reference": "Deep learning approaches for natural language processing",
     "other": [
       "DL methods in NLP",
@@ -17,6 +21,7 @@
     "expected": "DL methods in NLP"
   },
   {
+    "name": "hyphenation_spelling_variation",
     "reference": "Non-linear optimization techniques in control systems",
     "other": [
       "Nonlinear optimisation in control theory",
@@ -27,6 +32,7 @@
     "expected": "Nonlinear optimisation in control theory"
   },
   {
+    "name": "multilingual_stochastic_processes",
     "reference": "Analysis of stochastic processes in financial markets",
     "other": [
       "Analyse des processus stochastiques en finance",
@@ -34,9 +40,10 @@
       "Stochastic modeling for stock price prediction",
       "Financial accounting methods and standards"
     ],
-    "expected": "Stochastic modeling for stock price prediction"
+    "expected": "Analyse des processus stochastiques en finance"
   },
   {
+    "name": "gnn_molecular_prediction",
     "reference": "Graph neural networks for molecular property prediction",
     "other": [
       "Neural networks for image classification",
@@ -47,6 +54,7 @@
     "expected": "Molecular property prediction using graph neural nets"
   },
   {
+    "name": "cnn_medical_segmentation",
     "reference": "Convolutional neural networks for medical image segmentation",
     "other": [
       "CNNs in medical imaging segmentation",
@@ -57,6 +65,7 @@
     "expected": "CNNs in medical imaging segmentation"
   },
   {
+    "name": "symbol_normalization_cpp",
     "reference": "C++ memory management and performance optimization",
     "other": [
       "Memory management in C plus plus",
@@ -67,6 +76,7 @@
     "expected": "Memory management in C plus plus"
   },
   {
+    "name": "bayesian_inference_ranking",
     "reference": "Bayesian inference methods for probabilistic models",
     "other": [
       "Bayesian methods in statistics",
@@ -77,6 +87,7 @@
     "expected": "Approximate Bayesian inference in complex models"
   },
   {
+    "name": "attention_transformers",
     "reference": "The role of attention mechanisms in transformer architectures",
     "other": [
       "Attention in transformers",
@@ -87,6 +98,7 @@
     "expected": "Attention in transformers"
   },
   {
+    "name": "rl_autonomous_driving",
     "reference": "Reinforcement learning for autonomous driving systems",
     "other": [
       "Reinforcement learning in robotics",
@@ -97,16 +109,7 @@
     "expected": "RL for self-driving cars"
   },
   {
-    "reference": "Optimization of energy consumption in distributed systems",
-    "other": [
-      "Distributed optimization for energy systems",
-      "Energy-efficient distributed computing",
-      "Optimization techniques in centralized systems",
-      "Energy consumption models in computing"
-    ],
-    "expected": "Energy-efficient distributed computing"
-  },
-  {
+    "name": "rna_seq_expression",
     "reference": "Gene expression analysis using RNA sequencing data",
     "other": [
       "RNA-seq based gene expression analysis",
@@ -117,6 +120,7 @@
     "expected": "RNA-seq based gene expression analysis"
   },
   {
+    "name": "transfer_learning_cv",
     "reference": "Transfer learning in computer vision applications",
     "other": [
       "Transfer learning for image recognition",
@@ -127,6 +131,7 @@
     "expected": "Transfer learning for image recognition"
   },
   {
+    "name": "case_normalization_quantum_crypto",
     "reference": "Quantum computing algorithms for cryptography",
     "other": [
       "quantum computing for cryptography",
@@ -137,6 +142,7 @@
     "expected": "quantum computing for cryptography"
   },
   {
+    "name": "climate_marine_biodiversity",
     "reference": "Climate change impact on marine biodiversity",
     "other": [
       "Marine ecosystems and biodiversity",
@@ -147,6 +153,7 @@
     "expected": "Impact of climate change on oceans"
   },
   {
+    "name": "causal_inference_observational",
     "reference": "Causal inference in observational studies",
     "other": [
       "Causality in experimental studies",

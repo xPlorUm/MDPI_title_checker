@@ -1,18 +1,23 @@
 import json
-from src.MDPI_title_checker.model import Specter2Model
+import pytest
+from src.MDPI_title_checker.model import Specter2Model, SemanticModel, MultiLingualE5Model
+from pathlib import Path
 
-def test_model():
-    model = Specter2Model()
+BASE = Path(__file__).resolve().parent
 
-    with open("./tests/test_cases.json") as f:
-        cases = json.load(f)
+with open(BASE / "test_cases.json") as f:
+    cases = json.load(f)
 
-    for i, case in enumerate(cases):
-        result = model.find_most_similar(
-            case["reference"],
-            case["other"]
-        )
-        print(f"\nTest {i+1}")
-        print("Expected:", case["expected"])
-        print("Got     :", result)
-        assert result == case["expected"]
+
+@pytest.mark.parametrize("case", cases, ids=[f"{i}-{c['name']}" for i, c in enumerate(cases)])
+def test_model(case):
+    # model = Specter2Model()
+    # model = SemanticModel()
+    model = MultiLingualE5Model()
+
+    result, _ = model.find_most_similar(
+        case["reference"],
+        case["other"]
+    )
+    
+    assert result == case["expected"]
