@@ -66,8 +66,12 @@ curl -X POST "http://127.0.0.1:8000/find_similar" \
            ]
          }'
 ```
+# Tests
+Tests are generated using LLM.
 
-# Running Tests
+The current implementation does not involve a correct transformation of abbreviations to embedding space.
+
+## Running Tests
 ```
 poetry run pytest
 ```
